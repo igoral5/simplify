@@ -425,14 +425,24 @@ class TestSimplify(unittest.TestCase):
         simplify = Simplify('(x^2 + 3.5xy + y)^2 = y^2 - xy + y')
         with self.assertRaises(ParseError):
             simplify()
+            
     def test_expression_bad_token(self):
         simplify = Simplify('abc$=0')
         with self.assertRaises(ParseError):
             simplify()
+            
     def test_expression_not_closed_bracket(self):
         simplify = Simplify('((3x+5)*(z-1)=0')
         with self.assertRaises(ParseError):
             simplify()
+    
+    def test_primary_unary_minus(self):
+        simplify = Simplify('-7=0')
+        self.assertEqual(simplify(), '-7.0=0')
+    
+    def test_primary_unary_minus_right_side(self):
+        simplify = Simplify('0=-7')
+        self.assertEqual(simplify(), '7.0=0')
         
            
 if __name__ == '__main__':
