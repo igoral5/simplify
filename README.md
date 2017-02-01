@@ -1,1 +1,1 @@
-# simplify
+# Simplifying algebraic equations
