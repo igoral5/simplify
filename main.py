@@ -5,7 +5,7 @@ Created on 4 янв. 2017 г.
 Driver for simplify.py
 @author: igor
 '''
-import readline
+import readline  # @UnresolvedImport @UnusedImport
 import traceback
 from simplify import Simplify, ParseError
 import argparse
