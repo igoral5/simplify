@@ -217,14 +217,15 @@ class Simplify(object):
         if get:
             self.get_token()
         if self.curr_token == Token.NUMBER:
+            value = self.float_value
             self.get_token()
             term = Term()
             if self.curr_token == Token.POWER:
                 exp = self.get_int()
-                term.koeff = pow(self.float_value, exp)
+                term.koeff = value ** exp
                 self.get_token()
             else:
-                term.koeff = self.float_value
+                term.koeff = value
             polynom = Polynomial()
             polynom.add_term(term)
             return polynom
