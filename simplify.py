@@ -178,12 +178,12 @@ class Simplify(object):
     def __call__(self):
         if self.expression:
             self.get_token()
-            return str(self.full(False))+'=0'
+            return str(self.full())+'=0'
         else:
             raise ParseError('Empty expression')
     
-    def full(self, get):
-        left = self.expr(get)
+    def full(self):
+        left = self.expr(False)
         if self.curr_token != Token.ASSIGN:
             raise ParseError('= expected')
         right = self.expr(True)
